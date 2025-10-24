@@ -1,0 +1,24 @@
+{"clubs":[
+    {
+        "name":"Simply Lift",
+        "email":"john@simplylift.co",
+        "password":"Simply Lift",
+        "points":"13"
+    },
+    {
+        "name":"Iron Temple",
+        "email": "admin@irontemple.com",
+        "password": "admin-509",
+
+        "points":"4"
+    },
+    {   "name":"She Lifts",
+        "email": "kate@shelifts.co.uk",
+        "points":"12"
+    },
+    {   "name":"Admin Club",
+        "email": "admin@admin.com",
+        "password": "admin"
+    }
+
+]}
