@@ -44,11 +44,11 @@ def login():
 
                     session['user'] = club['name']
                     return redirect(url_for('admin'))
-            flash('Connexion impossible le mot de passe ou l\'email est incorrect')
-            return render_template('admin/login.html')
+            flash('Invalid mot de passe ou email')
+            return render_template('admin/login.html'), 404
         except KeyError:
-            flash('Please enter both email and password')
-            return render_template('admin/login.html')
+            flash('Connexion impossible le mot de passe ou l\'email est incorrect')
+            return render_template('admin/login.html'), 404
     return render_template('admin/login.html')
 
 
