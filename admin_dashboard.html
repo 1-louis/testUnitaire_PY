@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+</head>
+<body>
+    <h1>Admin Dashboard</h1>
+    <h2>Competitions</h2>
+    <ul>
+        <a href="{{url_for('logout')}}">Logout</a>
+        <h1>Bien venu dans le tableau de bord administrateur.</h1>
+         <br/>
+         <br/>
+         <br/>
+        ️<h3>Liste des compétitions et des clubs :</h3>
+    <ul>
+        {% for competition in competitions %}
+            <li>{{ competition.name }} - {{ competition.numberOfPlaces }} places</li>
+        {% endfor %}
+    </ul>
+    <h2>Clubs</h2>
+    <ul>
+        {% for club in clubs %}
+            <li>{{ club.name }} - {{ club.points }} points</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
