@@ -1,21 +1,34 @@
 import React, { Component } from 'react';
-import { Grid, Cell } from 'react-mdl';
+import Grid from '@material-ui/core/Grid';
+
+import { Link } from 'react-router-dom';
+import { AppBar, Toolbar, Typography, Container } from '@material-ui/core';
 
 
 class Landing extends Component {
   render() {
     return(
       <div style={{width: '100%', margin: 'auto'}}>
-        <Grid className="landing-grid">
-          <Cell col={12}>
+        <Grid container className="landing-grid">
+          <Grid item xs={12}>
+            <AppBar position="static" className="header-color">
+              <Toolbar>
+                  <Typography variant="h6" style={{ flexGrow: 1 }}>
+                  </Typography>
+                  <Link style={{textDecoration: 'none', color: 'white', marginRight: '1em'}} to="/">Accueil</Link>
+                  <Link style={{textDecoration: 'none', color: 'white', marginRight: '1em'}} to="/resume">Resume</Link>
+                  <Link style={{textDecoration: 'none', color: 'white', marginRight: '1em'}} to="/aboutme">About Me</Link>
+                  <Link style={{textDecoration: 'none', color: 'white', marginRight: '1em'}} to="/projects">Projects</Link>
+                  <Link style={{textDecoration: 'none', color: 'white'}} to="/contact">Contact</Link>
+                </Toolbar>
+              </AppBar>
             <img
               src="/images/IMG-20231104-copie.jpg"
               alt="avatar"
               className="avatar-img"  />
 
             <div className="banner-text">
-              <h1>MANAGEUR EN DEVELOPPEMENT IA ET DEVOPS BY </h1>
-
+                   <h1 className="banner-title">  Architecture et Développement Logiciel </h1> 
             <hr/> 
             <span>CONTRAT EN ALTERNANCE</span>
           <p>HTML/CSS | Bootstrap | JavaScript | React | React Native | NodeJS | ASP.NET | Symfony</p>
@@ -44,7 +57,7 @@ class Landing extends Component {
 
         </div>
             </div>
-          </Cell>
+          </Grid>
         </Grid>
       </div>
     )

@@ -1,108 +1,90 @@
-import React, { Component } from 'react';
-import { Tabs, Tab, Grid, Cell, Card, CardTitle, CardText, CardActions, Button, CardMenu, IconButton } from 'react-mdl';
+import React, { useState } from 'react';
+import { Tabs, Tab, Grid, Card, CardMedia, CardContent, CardActions, Button, Typography, Box, AppBar } from '@material-ui/core';
+import IconButton from '@material-ui/core/IconButton';
+import ShareIcon from '@material-ui/icons/Share';
 
+function TabPanel(props) {
+  const { children, value, index, ...other } = props;
 
-class Projects extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { activeTab: 0 };
-  }
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box p={3}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
+    </div>
+  );
+}
 
-  toggleCategories() {
+const projects = [
+  { name: 'React Project #1', description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's" },
+  { name: 'React Project #2', description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's" },
+  { name: 'React Project #3', description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's" },
+];
 
-    if(this.state.activeTab === 0){
-      return(
-        <div className="projects-grid">
-          {/* Project 1 */}
-          <Card shadow={5} style={{minWidth: '450', margin: 'auto'}}>
-            <CardTitle style={{color: '#fff', height: '176px', background: 'url(https://xtnotes-1255646395.coshk.myqcloud.com/images/react-1.svg) center / cover'}} >React Project #1</CardTitle>
-            <CardText>
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
-            </CardText>
-            <CardActions border>
-              <Button colored>GitHub</Button>
-              <Button colored>CodePen</Button>
-              <Button colored>Live Demo</Button>
-            </CardActions>
-            <CardMenu style={{color: '#fff'}}>
-              <IconButton name="share" />
-            </CardMenu>
-          </Card>
+function Projects() {
+  const [activeTab, setActiveTab] = useState(0);
 
-          {/* Project 2 */}
-          <Card shadow={5} style={{minWidth: '450', margin: 'auto'}}>
-            <CardTitle style={{color: '#fff', height: '176px', background: 'url(https://xtnotes-1255646395.coshk.myqcloud.com/images/react-1.svg) center / cover'}} >React Project #2</CardTitle>
-            <CardText>
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
-            </CardText>
-            <CardActions border>
-              <Button colored>GitHub</Button>
-              <Button colored>CodePen</Button>
-              <Button colored>Live Demo</Button>
-            </CardActions>
-            <CardMenu style={{color: '#fff'}}>
-              <IconButton name="share" />
-            </CardMenu>
-          </Card>
+  const handleChange = (event, newValue) => {
+    setActiveTab(newValue);
+  };
 
-          {/* Project 3 */}
-          <Card shadow={5} style={{minWidth: '450', margin: 'auto'}}>
-            <CardTitle style={{color: '#fff', height: '176px', background: 'url(https://xtnotes-1255646395.coshk.myqcloud.com/images/react-1.svg) center / cover'}} >React Project #3</CardTitle>
-            <CardText>
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
-            </CardText>
-            <CardActions border>
-              <Button colored>GitHub</Button>
-              <Button colored>CodePen</Button>
-              <Button colored>Live Demo</Button>
-            </CardActions>
-            <CardMenu style={{color: '#fff'}}>
-              <IconButton name="share" />
-            </CardMenu>
-          </Card>
-        </div>
-
-
-      )
-    } else if(this.state.activeTab === 1) {
-      return (
-        <div><h1>This is Angular</h1></div>
-      )
-    } else if(this.state.activeTab === 2) {
-      return (
-        <div><h1>This is ASP.NET</h1></div>
-      )
-    } else if(this.state.activeTab === 3) {
-      return (
-        <div><h1>This is Symfony</h1></div>
-      )
-    }
-
-  }
-
-
-
-  render() {
-    return(
-      <div>
-        <Tabs activeTab={this.state.activeTab} onChange={(tabId) => this.setState({ activeTab: tabId })} ripple>
-          <Tab>React Javascript</Tab>
-          <Tab>Ionic Angular</Tab>
-          <Tab>ASP.NET</Tab>
-          <Tab>Symfony</Tab>
+  return (
+    <div>
+      <AppBar position="static">
+        <Tabs value={activeTab} onChange={handleChange} aria-label="simple tabs example">
+          <Tab label="React Javascript" />
+          <Tab label="Ionic Angular" />
+          <Tab label="ASP.NET" />
+          <Tab label="Symfony" />
         </Tabs>
-
-
-          <Grid>
-            <Cell col={12}>
-              <div className="content">{this.toggleCategories()}</div>
-            </Cell>
-          </Grid>
-
-
-      </div>
-    )
-  }
+      </AppBar>
+      <TabPanel value={activeTab} index={0}>
+        <Grid container spacing={3} className="projects-grid">
+          {projects.map((project, index) => (
+            <Grid item xs={12} sm={6} md={4} key={index}>
+              <Card>
+                <CardMedia
+                  style={{ height: 176 }}
+                  image="images/IMG-20231104-WA0008.jpg"
+                  title={project.name}
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="h2">
+                    {project.name}
+                  </Typography>
+                  <Typography variant="body2" color="textSecondary" component="p">
+                    {project.description}
+                  </Typography>
+                </CardContent>
+                <CardActions>
+                  <Button size="small" color="primary">GitHub</Button>
+                  <Button size="small" color="primary">CodePen</Button>
+                  <Button size="small" color="primary">Live Demo</Button>
+                </CardActions>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+      </TabPanel>
+      <TabPanel value={activeTab} index={1}>
+        <h1>This is Angular</h1>
+      </TabPanel>
+      <TabPanel value={activeTab} index={2}>
+        <h1>This is ASP.NET</h1>
+      </TabPanel>
+      <TabPanel value={activeTab} index={3}>
+        <h1>This is Symfony</h1>
+      </TabPanel>
+    </div>
+  );
 }
 
 export default Projects;

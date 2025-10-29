@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import { Grid, Cell } from 'react-mdl';
+import Grid from '@material-ui/core/Grid';
 
 
 class About extends Component {
   render() {
     return(
      
-    <Grid className="About-grid"> 
-        <Cell col={8}>
+    <Grid container className="About-grid"> 
+        <Grid item xs={8}>
         <div><h1>A propos de moi</h1></div> 
           <h4 style={{marginTop:'0px'}}>{this.props.aboutName}</h4>
           <p>Je poursuis actuellement un Mastère en management en architecture et Développement Logiciel à l’IMIE Paris, avec une spécialisation en Intelligence Artificielle et DevOps. J’ai choisi ce parcours car je crois profondément que <b>la data et l’IA </b> transforment notre manière de travailler, de décider et d’innover. Je souhaite mettre cette conviction au service de vos projets, en rejoignant vos équipes en alternance.</p>
@@ -15,7 +15,7 @@ class About extends Component {
           <p>Ce que j’aime dans ce métier, c’est justement cette passerelle entre la technique et l’humain : comprendre une problématique métier, l’analyser, proposer une solution et la voir se concrétiser. SQL, C#, bases de données ou méthodologies agiles sont pour moi des outils ; ce qui me motive avant tout, c’est de contribuer à des projets qui apportent une vraie valeur.</p>
           <p>Je me reconnais dans les qualités que vous recherchez : autonomie, esprit d’équipe, sens de l’organisation. J’y ajoute ma curiosité et mon envie d’apprendre, car pour moi, une alternance est avant tout <b>une aventure partagée</b>, où l’on progresse ensemble.</p>
           {/* <p>{this.props.aboutDescription4}</p> */}
-        </Cell>
+        </Grid>
     </Grid>
      
     )

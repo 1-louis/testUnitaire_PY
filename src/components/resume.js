@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Cell } from 'react-mdl';
+import Grid from '@material-ui/core/Grid';
 import Education from './education';
 import Experience from './experience';
 import Skills from './skills';
@@ -9,11 +9,11 @@ class Resume extends Component {
   render() {
     return(
       <div>
-        <Grid>
-          <Cell col={4}>
+        <Grid container>
+          <Grid item md={4}>
             <div style={{textAlign: 'center'}}>
               <img
-                src="/images/IMG-20231104-copie.jpg"
+                src="/images/IMG-20231104-WA0008.jpg"
                 alt="avatar"
                 style={{height: '200px'}}
                  />
@@ -45,8 +45,8 @@ class Resume extends Component {
             <h5>Web</h5>
             <p>lelotech.net</p>
             <hr style={{borderTop: '3px solid #833fb2', width: '50%'}}/>
-          </Cell>
-          <Cell className="resume-right-col" col={8}>
+          </Grid>
+          <Grid item md={8} className="resume-right-col">
             <h2>Education</h2>
 
 
@@ -75,7 +75,7 @@ class Resume extends Component {
                  schoolName=" IMIE levallois perret"
                  schoolDescription="Développeur Web et Web mobile (DWWM) bac+2 obtenu"
                  schoolDescription1="HTML5, CSS3, JavaScript, PHP, MySQL, Bootstrap,REACT JS,Ionic, REACT NATIVE"
-                schoolDescription2="Conception  de sites web et mobile ,javascript PHP, REACT,react native , ionic"
+                schoolDescription2="Conception de sites web et mobile ,javascript PHP, REACT,react native , ionic"
                   />
                 <hr style={{borderTop: '3px solid #e22947'}} />
 
@@ -154,7 +154,7 @@ class Resume extends Component {
                       />
 
 
-          </Cell>
+          </Grid>
         </Grid>
       </div>
     )
